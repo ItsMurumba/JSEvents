@@ -4,6 +4,9 @@ const blueButton = document.getElementById('color-button-blue');
 const brownButton = document.getElementById('color-button-brown');
 const greenButton = document.getElementById('color-button-green');
 const noneButton = document.getElementById('color-button-none');
+const addPostButton = document.getElementById('add-post');
+const section=document.querySelector('section');
+const removeLastPostButton=document.getElementById('remove-post');
 
 // Click event listeners
 blueButton.addEventListener('click', () => {
@@ -24,6 +27,16 @@ greenButton.addEventListener('click', () => {
 noneButton.addEventListener('click', () => {
     header.classList.remove('blue-background', 'brown-background', 'green-background', 'text-white');
 });
+addPostButton.addEventListener('click',()=>{
+    const newPost= createNewPost();
+    section.appendChild(newPost);
+});
+removeLastPostButton.addEventListener('click', () => {
+    const articleCount=section.childElementCount;
+    if(articleCount>1){
+        section.removeChild(section.children[articleCount-1]);
+    }
+});
 
 //New Post Function
 function createNewPost(){
@@ -43,18 +56,7 @@ function createNewPost(){
     //Add a class to the newArticle tag
     newArticle.classList.add('list-group-item');
 
-    //Get the tag to append the new post
-    const section=document.querySelector('section');
-
     //Return the HTML element built above
-    return section.appendChild(newArticle);
+    return newArticle;
 
 }
-
-
-//Event Listener to createNewPost function
-const addPostButton = document.getElementById('add-post');
-addPostButton.addEventListener('click',()=>{
-    const newPost= createNewPost();
-    newPost();
-});
