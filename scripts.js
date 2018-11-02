@@ -26,15 +26,15 @@ noneButton.addEventListener('click', () => {
 });
 
 //New Post Function
-function createNewPost() {
+function createNewPost(){
     //Create new post elements:article,h5,p
-    let newArticle = document.createElement('article');
-    let newHeader = document.createElement('h5');
-    let newParagaraph = document.createElement('p');
+    let newArticle=document.createElement('article');
+    let newHeader=document.createElement('h5');
+    let newParagaraph=document.createElement('p');
 
     //Added text content to the created elements
-    newHeader.textContent = 'New Post';
-    newParagaraph.textContent = 'We are here.';
+    newHeader.textContent='New Post';
+    newParagaraph.textContent='We are here.';
 
     //append the header and paragraph to the article tag
     newArticle.appendChild(newHeader);
@@ -44,23 +44,17 @@ function createNewPost() {
     newArticle.classList.add('list-group-item');
 
     //Get the tag to append the new post
-    const main = document.querySelector('main');
+    const section=document.querySelector('section');
 
     //Return the HTML element built above
-    return main.appendChild(newArticle);
+    return section.appendChild(newArticle);
 
 }
 
 
 //Event Listener to createNewPost function
 const addPostButton = document.getElementById('add-post');
-addPostButton.addEventListener('click', () => {
-    createNewPost();
-})
-
-
-
-
-
-
-
+addPostButton.addEventListener('click',()=>{
+    const newPost= createNewPost();
+    newPost();
+});
